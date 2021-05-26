@@ -29,5 +29,5 @@ class ProductCreate(CreateView):
     model = Product
     # form_class = BlogForm
     fields = ['name', 'category', 'description', 'price'] #form
-    template_name = 'productapp/product_new.html'  # If not provided, searches for 'blog/blog_form.html'
+    template_name = 'productapp/product_new.html'  # If not provided, searches for 'blog/blog_form.html' # I don't see it in templates.. add it, make sure Image is getting uploaded from there
     success_url = reverse_lazy('productapp:product_list') # reverse map a url -
