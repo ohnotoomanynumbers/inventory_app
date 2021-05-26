@@ -12,6 +12,7 @@ class CategoryList(ListView):
     model = Category
     template_name = 'productapp/category_list.html'
 
+
 class ProductList(ListView):
     model = Product
     template_name = 'productapp/product_list.html'
