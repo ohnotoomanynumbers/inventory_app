@@ -7,7 +7,7 @@
     {% if products %}
         <table>
         {% for product in products %}
-            <tr><td>&nbsp;&nbsp;&nbsp;</td><td><a href="{% url 'productapp:product_detail' product.id.id %}">{{ product.product_name }}</a></td>
+            <tr><td>&nbsp;&nbsp;&nbsp;</td><td><a href="{% url 'productapp:product_detail' category.id.id %}">{{ category.category_name }}</a></td>
 
                 <td><a href="{% url 'productapp:product_update' product.id %}" > Edit </a></td></tr>
             {% empty %}

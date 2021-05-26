@@ -5,7 +5,6 @@ from django.shortcuts import render, get_object_or_404
 
 from productapp.models import Product, Category
 from django.urls import reverse_lazy
-# Create your views here.
 
 
 class CategoryList(ListView):
