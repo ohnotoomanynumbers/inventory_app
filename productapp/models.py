@@ -14,3 +14,7 @@ class Product(models.Model):
     product_description = models.CharField(max_length=500)
     product_price = models.FloatField(default=0)
     product_image = models.ImageField(upload_to='media', height_field=None, max_length=100)
+
+
+class User(models.Model):
+    pass
