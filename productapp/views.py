@@ -27,6 +27,8 @@ class ProductDetail(DetailView):
 class ProductCreate(CreateView):
     model = Product
     # form_class = BlogForm
-    fields = ['name', 'category', 'description', 'price'] #form
+    fields = ['product_name', 'product_category', 'product_description', 'product_price'] #form
     template_name = 'productapp/product_new.html'
-    success_url = reverse_lazy('productapp:product_list') # reverse map a url -
+    # success_url = reverse_lazy('productapp:product_list') # reverse map a url -
+
+    def get_success_url():

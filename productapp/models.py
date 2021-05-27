@@ -1,11 +1,15 @@
 from django.db import models
 
 # Create your models here.
+from django.urls import reverse_lazy
 
 
 class Category(models.Model):
     category_name = models.CharField(max_length=200)
     category_id = models.IntegerField()
+
+    def get_absolute_url(self):
+        return reverse_lazy('productapp:category_list')
 
 
 class Product(models.Model):
