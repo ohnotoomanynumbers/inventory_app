@@ -1,20 +1,34 @@
-{% extends '../base.html' %}
+{% extends "base.html" %}
+{% load static %}
 
-{% block title %}Product List{% endblock title %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
 
 {% block content %}
-{{ products }}
-    {% if products %}
-        <table>
-        {% for product in products %}
-            <tr><td>&nbsp;&nbsp;&nbsp;</td><td><a href="{% url 'productapp:product_detail' product.id %}">{{ product.product_name }}</a></td>
-
-                <td><a href="{% url 'productapp:product_update' product.id %}" > Edit </a></td></tr>
-            {% empty %}
+    <div id="sidebar">
+        <h3>Categories</h3>
+        <ul>
+            <li {% if not category %}class="selected"{% endif %}>
+                <a href="{% url "productapp:product_list" %}">All</a>
+            </li>
+        {% for c in categories %}
+            <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+            </li>
         {% endfor %}
-        </table>
-    {% else %}
-        <p>No products are available.</p>
-    {% endif %}
-
-{% endblock content %}
+        </ul>
+    </div>
+    <div id="main" class="product-list">
+        <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+        {% for product in products %}
+            <div class="item">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                </a>
+                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+                ${{ product.price }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

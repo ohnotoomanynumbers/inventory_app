@@ -1,14 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Django{% endblock title %}</title>
+    <title>{% block title %}HOME{% endblock title %}</title>
 </head>
 <body>
+        <div id="header">
+    </div>
     <div>
         <table width="100%">
             <tr>
-                <td colspan="75%"><a href="{% url 'productapp:category_list' %}"> HOME </a></td>
+                <td colspan="75%"><a href="{% url 'productapp:product_list' %}"> HOME </a></td>
                 <td colspan="25%">
                     {% if user.is_authenticated %}
                         <p><a href="{% url 'logout' %}">Log Out</a></p>
