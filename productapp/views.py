@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
@@ -27,10 +27,16 @@ def product_detail(request, id, slug):
 class ProductCreate(CreateView):
     model = Product
     # form_class = BlogForm
-    fields = ['product_name', 'product_category', 'product_description', 'product_price'] #form
+    fields = ['name', 'category', 'description', 'price'] #form
     template_name = 'productapp/product_new.html'
     success_url = reverse_lazy('productapp:product_list') # reverse map a url -
 
 class ProductDelete(DeleteView):
     model = Product
+    success_url = reverse_lazy('productapp:product_list')
+
+class ProductUpdate(UpdateView):
+    model = Product
+    fields = ['name', 'category', 'description', 'price']
+    template_name = 'productapp/product_new.html'
     success_url = reverse_lazy('productapp:product_list')

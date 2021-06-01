@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+    <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update"><form method="post" action="{% url 'productapp:product_update' %}">{% csrf_token %}
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" value="Update">Update</button>
+        <a href="{% url 'productapp:product_list' %}" > Cancel </a>
+</form>
+</body>
+</html>

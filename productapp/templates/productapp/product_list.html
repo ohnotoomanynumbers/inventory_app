@@ -21,14 +21,23 @@
     </div>
     <div id="main" class="product-list">
         <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+        <table>
         {% for product in products %}
-            <div class="item">
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-                </a>
-                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
-                ${{ product.price }}
-            </div>
+            <tr>
+                <div class="item">
+
+                    <th><a href="{{ product.get_absolute_url }}">
+                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                    </a></th>
+
+                    <th><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></th>
+                    <th>${{ product.price }}<th/>
+                    <th><a href="{% url 'productapp:product_update' product.id product.slug%}">Update</a></th>
+                    <th><a href="{% url 'productapp:confirm_delete' product.id product.slug%}">Delete</a></th>
+                </div>
+            </tr>
         {% endfor %}
+            <tr><a href="new/">Create New Product</a></tr>
+        </table>
     </div>
 {% endblock %}
